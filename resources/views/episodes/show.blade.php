@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<header class="masthead" style="background-image:url('/images/{{ $episode->img_path }}');">
+<header class="masthead" style="background-image:url('/public/images/{{ $episode->img_path }}');">
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
@@ -23,7 +23,7 @@
             @if (isset(Auth::user()->id) && Auth::user()->id == $episode->user_id)
                 <span>
                     <a 
-                        href="/episodes/{{ $episode->slug }}/edit"
+                        href="/public/episodes/{{ $episode->slug }}/edit"
                         class="muted">
                         ویرایش 📝
                     </a>

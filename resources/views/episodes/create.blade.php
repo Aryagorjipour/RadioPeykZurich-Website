@@ -30,7 +30,7 @@
 
     <div class="form-group w-75">
         <form 
-            action="/episodes"
+            action="/public/episodes"
             method="post"
             enctype="multipart/form-data">
             @csrf

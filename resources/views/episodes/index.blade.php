@@ -18,7 +18,7 @@
     <div class="row">
         @if (Auth::check())
             <div class="col-6">
-                <a href="/episodes/create"
+                <a href="/public/episodes/create"
                     class="btn btn-success me-2 rounded-pill">
                     افزودن قسمت جدید
                 </a>
@@ -39,10 +39,10 @@
         <div class="col-md-10 col-lg-8">
             @foreach ($episodes as $episode)
             <div class="row" style="align-items: center;">
-                <div class="col-2"> <img src="/images/{{ $episode->img_path }}" alt="{{ $episode->title}}" class="img-fluid "/></div>
+                <div class="col-2"> <img src="/public/images/{{ $episode->img_path }}" alt="{{ $episode->title}}" class="img-fluid "/></div>
                 <div class="col-10">
                     <div class="post-preview">
-                        <a href="/episodes/{{ $episode->slug }}">
+                        <a href="/public/episodes/{{ $episode->slug }}">
                             <h2 class="post-title"> {{ $episode->title }}</h2>
                         </a>
                         <p class="post-meta">بارگذاری شده توسط&nbsp; رادیو پیک زوریخ در  {{ date('jS M Y', strtotime($episode->updated_at))}}</p>

@@ -30,7 +30,7 @@
 
     <div class="form-group w-75">
         <form 
-            action="/episodes/{{ $episode->id }}"
+            action="/public/episodes/{{ $episode->id }}"
             method="post"
             enctype="multipart/form-data">
             @csrf
