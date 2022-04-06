@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\EpisodesController;
+use App\Http\Controllers\ArchiveController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +20,8 @@ Route::get('/about', [PagesController::class, 'about']);
 
 
 Route::resource('/episodes', EpisodesController::class);
+Route::get('/search', [ArchiveController::class, 'search'])->name('search');
+Route::resource('/archive', ArchiveController::class);
 
 Auth::routes();
 

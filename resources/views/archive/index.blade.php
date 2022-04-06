@@ -1,31 +1,28 @@
 @extends('layouts.app')
-
 @section('content')
-
-@include('layouts.hero', ['heading' => 'فهرست قسمت های منتشر شده', 'subheading' => 'در اینجا شما میتوانید لیست همه قسمت های منتشر شده را ببینید'])
-
-<div class="container">
-    <div class="row">
-        @if (Auth::check())
-            <div class="col-6">
-                <a href="/episodes/create"
-                    class="btn btn-success me-2 rounded-pill">
-                    افزودن قسمت جدید
-                </a>
+<header class="masthead" style="background-image:url('assets/img/home-bg.jpg?h=ed6236475a1226b743bf65e6f1bebb34');">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-lg-8 mx-auto position-relative">
+                <div class="site-heading">
+                    <h1>آرشیو رادیو پیک زوریخ</h1>
+                    {{-- <span class="subheading">این آرشیو تاریخ {{ $date }} می باشد</span> --}}
+                </div>
             </div>
-        @endif
-        @if (session()->has('message'))
-        <div class="col-6">
-            <p class="w-25 alert alert-success">
-                {{ session()->get('message') }}
-            </p>
         </div>
-    @endif
     </div>
-</div>
+</header>
+
+@include('layouts.hero', ['heading' => 'test', 'subheading' => 'تست'])
 
 <div class="container">
     <div class="row">
+        @if (sizeof($episodes) <= 0)
+        <div class="alert alert-warning" style="text-align:center" role="alert">
+ هیچ قسمتی در این تاریخ وجود ندارد <a class="text-info" href="javascript: history.go(-1)"> بازگشت </a>
+        </div>
+        @endif
         <div class="col-md-10 col-lg-8">
             @foreach ($episodes as $episode)
             <div class="row" style="align-items: center;">
@@ -41,6 +38,8 @@
             </div>
             <hr>
             @endforeach
+            
         </div>
     </div>
+</div>
 @endsection

@@ -1,19 +1,8 @@
 @extends('layouts.app')
-
-
 @section('content')
-<header class="masthead" style="background-image:url('assets/img/home-bg.jpg?h=ed6236475a1226b743bf65e6f1bebb34');">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-lg-8 mx-auto position-relative">
-                <div class="site-heading">
-                    <h1>افزودن قسمت جدید</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
+
+@include('layouts.hero', ['heading' => 'افزودن قسمت جدید', 'subheading' => ''])
+
 @if ($errors->any())
     <div class="w-4/5 m-auto">
         <ul>
@@ -30,7 +19,7 @@
 
     <div class="form-group w-75">
         <form 
-            action="/public/episodes"
+            action="/episodes"
             method="post"
             enctype="multipart/form-data">
             @csrf
@@ -42,6 +31,9 @@
     
             <input name="youtube" type="text" placeholder="لینک یوتیوب..." class="form-control mt-4">
             <input name="mixcloud" type="text" placeholder="لینک میکس کلود..." class="form-control mt-4">
+            <input name="publish_year" type="number" placeholder="سال پابلیش ..." class="form-control mt-4">
+            <input name="publish_month" type="number" placeholder="ماه پابلیش ..." class="form-control mt-4">
+            <input name="publish_day" type="number" placeholder="روز پابلیش ..." class="form-control mt-4">
     
 
             <div class="pt-4 pb-4">

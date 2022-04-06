@@ -2,18 +2,9 @@
 
 
 @section('content')
-<header class="masthead" style="background-image:url('assets/img/home-bg.jpg?h=ed6236475a1226b743bf65e6f1bebb34');">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-lg-8 mx-auto position-relative">
-                <div class="site-heading">
-                    <h1>ویرایش قسمت {{ $episode->id }}</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
+
+@include('layouts.hero', ['heading' => 'ویرایش قسمت {{ $episode->id }}', 'subheading' => ''])
+
 @if ($errors->any())
     <div class="w-4/5 m-auto">
         <ul>
@@ -30,11 +21,12 @@
 
     <div class="form-group w-75">
         <form 
-            action="/public/episodes/{{ $episode->id }}"
+            action="/episodes/{{ $episode->id }}"
             method="post"
             enctype="multipart/form-data">
             @csrf
             @method('put')
+            <input type="hidden" name="img_path" value="{{ $episode->img_path }}"/>
             <input name="slug" type="hidden" value="{{ $episode->slug }}"/> 
             
             <input name="title" type="text" value="{{ $episode->title }}" class="form-control mt-4">
@@ -44,7 +36,15 @@
     
             <input name="youtube" type="text" value="{{ $episode->youtube_link }}" class="form-control mt-4">
             <input name="mixcloud" type="text" value="{{ $episode->cloud_link }}" class="form-control mt-4">
-    
+            <input name="publish_year" type="number" value="{{ $episode->publish_year }}" class="form-control mt-4">
+            <input name="publish_month" type="number" value="{{ $episode->publish_month }}" class="form-control mt-4">
+            <input name="publish_day" type="number" value="{{ $episode->publish_day }}" class="form-control mt-4">
+            <div class="pt-4 pb-4">
+                <label class="form-control">
+                    <span class="mt-2 text-base leading-normal">عکس این قسمت را وارد کنید</span>
+                    <input type="file" name="image" class="d-none">               
+                </label>
+            </div>
 
             <button type="submit" class="btn btn-primary rounded-pill mt-5">
                 ویرایش قسمت {{ $episode->id }}

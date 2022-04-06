@@ -6,7 +6,7 @@
                     <a href="#">
                         <li class="list-inline-item"><span class="fa-stack fa-lg"><i
                                     class="fa fa-circle fa-stack-2x"></i><i
-                                    class="fa fa-twitter fa-stack-1x fa-inverse"></i></span></li>
+                                    class="fa fa-telegram fa-stack-1x fa-inverse"></i></span></li>
                     </a>
                     <a href="#">
                         <li class="list-inline-item"><span class="fa-stack fa-lg"><i
@@ -16,7 +16,7 @@
                     <a href="#">
                         <li class="list-inline-item"><span class="fa-stack fa-lg"><i
                                     class="fa fa-circle fa-stack-2x"></i><i
-                                    class="fa fa-github fa-stack-1x fa-inverse"></i></span></li>
+                                    class="fa fa-youtube-play fa-stack-1x fa-inverse"></i></span></li>
                     </a>
                 </ul>
                 <p class="text-muted copyright">Copyright&nbsp;©&nbsp;Radio Zürich    

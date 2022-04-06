@@ -11,7 +11,7 @@ class Episode extends Model
     use HasFactory;
     use Sluggable;
 
-    protected $fillable = ['title','slug','youtube_link','cloud_link','description','img_path','user_id'];
+    protected $fillable = ['title','slug','youtube_link','cloud_link','publish_year','publish_day','publish_month','description','img_path','user_id'];
 
     public function user(){
         return $this->belongsTo(User::class);

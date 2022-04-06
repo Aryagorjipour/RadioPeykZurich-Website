@@ -48,6 +48,9 @@ class EpisodesController extends Controller
             'title' => 'required',
             'youtube' => 'required',
             'mixcloud' => 'required',
+            'publish_year' => 'required|integer',
+            'publish_month' => 'required|integer',
+            'publish_day' => 'required|integer',
             'description' => 'required',
             'image' => 'required|mimes:png,jpg,jpeg|max:5048',
         ]);
@@ -61,6 +64,9 @@ class EpisodesController extends Controller
             'title' => $request->input('title'),
             'youtube_link' => $request->input('youtube'),
             'cloud_link' => $request->input('mixcloud'),
+            'publish_year' => $request->input('publish_year'),
+            'publish_month' => $request->input('publish_month'),
+            'publish_day' => $request->input('publish_day'),
             'description' => $request->input('description'),
             'slug' => SlugService::createSlug(Episode::class, 'slug', $request->title),
             'img_path' => $newImageName,
@@ -107,19 +113,28 @@ class EpisodesController extends Controller
             'youtube' => 'required',
             'mixcloud' => 'required',
             'description' => 'required',
+            'publish_year' => 'required|integer',
+            'publish_month' => 'required|integer',
+            'publish_day' => 'required|integer',
+            'image' => 'mimes:png,jpg,jpeg|max:5048',
         ]);
-
+        if ($request->image != null) {
+            $request->image->move(public_path('images'), $request->input('img_path'));
+        }
         Episode::where('id', $id)
             ->update([
                 'title' => $request->input('title'),
                 'youtube_link' => $request->input('youtube'),
                 'cloud_link' => $request->input('mixcloud'),
                 'description' => $request->input('description'),
+                'publish_year' => $request->input('publish_year'),
+                'publish_month' => $request->input('publish_month'),
+                'publish_day' => $request->input('publish_day'),
                 'slug' => SlugService::createSlug(Episode::class, 'slug', $request->title),
                 'user_id' => auth()->user()->id,
             ]);
-
-        return redirect('/episodes')->with('message', 'قسمت مورد نظر به درستی ویرایش گردید');
+        
+        return redirect('/episodes')->with('message', 'قسمت مورد نظر با موفقیت ویرایش شد.');
     }
 
     /**

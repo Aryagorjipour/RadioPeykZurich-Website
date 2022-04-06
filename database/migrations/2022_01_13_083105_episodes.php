@@ -21,6 +21,9 @@ class Episodes extends Migration
             $table->LongText('youtube_link');
             $table->LongText('cloud_link');
             $table->string('img_path');
+            $table->Integer('publish_year');
+            $table->Integer('publish_month');
+            $table->Integer('publish_day');
             $table->timestamps();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');

@@ -1,21 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-<header class="masthead" style="background-image:url('/public/images/{{ $episode->img_path }}');">
+<header class="masthead">
     <div class="overlay"></div>
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-lg-8 mx-auto position-relative">
+        <div class="row" style="align-items: center;">
+            <div class="col-sm-12 col-md-4 col-lg-4 mx-auto position-relative">
+                <div class="post-heading">
+                   <img src="/images/{{ $episode->img_path }}" alt="{{ $episode->title }}" class="img-thumbnail">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-8 col-lg-8 mx-auto position-relative">
                 <div class="post-heading">
                     <h1>شاهد قسمت {{ $episode->id }} باشید با عنوان</h1>
-                    <h2 class="subheading">{{ $episode->title }}</h2><span
-                        class="meta">بارگذاری شده توسط &nbsp;<a href="/">رادیو پیک زوریخ</a>&nbsp;در  {{ date('jS M Y', strtotime($episode->updated_at))}}</span>
+                    <h2 class="subheading" style="font-weight: bolder">"{{ $episode->title }}"</h2><span
+                        class="meta">بارگذاری شده توسط &nbsp;<a href="/">رادیو پیک زوریخ</a>&nbsp;در {{ $episode->publish_year }} / {{ $episode->publish_month }} / {{ $episode->publish_day }}</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
-
 
 <article>
     <div class="container">
@@ -23,7 +27,7 @@
             @if (isset(Auth::user()->id) && Auth::user()->id == $episode->user_id)
                 <span>
                     <a 
-                        href="/public/episodes/{{ $episode->slug }}/edit"
+                        href="/episodes/{{ $episode->slug }}/edit"
                         class="muted">
                         ویرایش 📝
                     </a>

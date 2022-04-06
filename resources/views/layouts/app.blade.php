@@ -24,6 +24,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('fonts/font-awesome.min.css?h=c2a3618fc145edb3ca7fb92db4b9f32b') }}">
 
+
 </head>
 <body>
     <div id="app">
@@ -33,10 +34,16 @@
                     aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i
                         class="fa fa-bars"></i></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto" style="justify-content: center;align-items: baseline;">
                         <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">صفحه اصلی</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ url('/episodes') }}">قسمت ها</a></li>
+                        
                         <li class="nav-item"><a class="nav-link" href="{{ url('/about') }}">درباره ما</a></li>
+                        <form action="{{ route('search') }}" method="GET">
+                            <input type="text" class="form-control" style="display: unset;width: auto;" name="search" required/>
+                            <button type="submit" class="btn btn-primary rounded-pill p-2">جستوجو</button>
+                        </form>
+                    </ul>
                 </div>
             </div>
         </nav>
